@@ -1,0 +1,10 @@
+target/
+
+### Logs ###
+.logs
+
+### InteliJ IDEA ###
+.idea
+
+### MacOs Stuff ###
+**/.DS_Store

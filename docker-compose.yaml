@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: country-management-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      RESTCOUNTRIES_API_BASE_URL: http://restcountries-api-url.com
+    volumes:
+      - ./logs:/app/logs
