@@ -10,7 +10,6 @@ import java.util.List;
 public class ErrorDTO {
     private Date timestamp;
     private int status;
-    private String path;
     private List<String> errors = new ArrayList<>();
 
     public void addError(String message) {

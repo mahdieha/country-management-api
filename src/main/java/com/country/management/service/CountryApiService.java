@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -32,7 +33,7 @@ public class CountryApiService {
         try {
             response = restTemplate.getForEntity(apiUrl, Country[].class);
         } catch (Exception e) {
-            throw new CountryApiException(ExceptionMessage.FAILED_FETCH_COUNTRY,e);
+            throw new CountryApiException(ExceptionMessage.FAILED_FETCH_COUNTRY, e);
         }
 
         validateResponse(response);
@@ -41,7 +42,7 @@ public class CountryApiService {
     }
 
     private void validateResponse(ResponseEntity<Country[]> response) {
-        HttpStatus statusCode = response.getStatusCode();
+        HttpStatusCode statusCode = response.getStatusCode();
         Country[] responseBody = response.getBody();
 
         if (statusCode != HttpStatus.OK || responseBody == null || responseBody.length == 0) {

@@ -24,15 +24,14 @@ It uses the [REST Countries API](https://gitlab.com/restcountries/restcountries)
 
 ### Prerequisites
 
-- Java 11
-- Maven 3.6.3
+- Java 17
 
 ### Steps
 
 1. Clone the repository
 2. Run `mvn clean install` in the root directory
 3. Run `mvn spring-boot:run` in the root directory
-4. Open `http://localhost:8080/swagger-ui.html` in your browser
+4. Open `http://localhost:8080/swagger-ui/index.html` in your browser
 
 ## Testing
 
@@ -44,13 +43,13 @@ It uses the [REST Countries API](https://gitlab.com/restcountries/restcountries)
 
 1. Clone the repository
 2. Run `docker-compose up --build` in the root directory
-4. Open `http://localhost:8080/swagger-ui.html` in your browser
+4. Open `http://localhost:8080/swagger-ui/index.html` in your browser
 
 ## Usage
 
 ### Swagger
 
-Swagger is used to document the API. It can be accessed at `http://localhost:8080/swagger-ui.html`.
+Swagger is used to document the API. It can be accessed at `http://localhost:8080/swagger-ui/index.html`.
 
 ### Endpoints
 

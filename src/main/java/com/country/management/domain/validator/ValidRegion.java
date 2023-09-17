@@ -1,17 +1,17 @@
 package com.country.management.domain.validator;
 
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
 @Constraint(validatedBy = RegionValidator.class)
-@Target({ElementType.PARAMETER, ElementType.METHOD, ElementType.FIELD})
+@Target({ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidRegion {
 
-    String message() default "Invalid region";
+    String message() default "";
 
     Class<?>[] groups() default {};
 

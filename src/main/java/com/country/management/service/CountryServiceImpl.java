@@ -30,7 +30,7 @@ public class CountryServiceImpl implements CountryService {
         // Sort countries by population density in descending order
         return countries.stream()
                 .sorted(Comparator.comparingDouble(Country::calculatePopulationDensity).reversed())
-                .collect(Collectors.toList());
+                .toList();
     }
 
 
@@ -41,7 +41,7 @@ public class CountryServiceImpl implements CountryService {
 
         List<Country> regionCountries = countries.stream()
                 .filter(country -> country.getRegion().equalsIgnoreCase(region))
-                .collect(Collectors.toList());
+                .toList();
 
 
         Country countryWithMostBorderingCountries = null;
@@ -59,7 +59,7 @@ public class CountryServiceImpl implements CountryService {
                     .map(code -> findCountryByCode(code, countries))
                     .filter(Objects::nonNull) //To filter out countries that not listed/founded
                     .filter(country -> !regionCountry.getRegion().equalsIgnoreCase(country.getRegion()))
-                    .collect(Collectors.toList());
+                    .toList();
 
             if (borderWithDifferentRegionCount.size() > maxBorderingCountries) {
                 maxBorderingCountries = borderWithDifferentRegionCount.size();

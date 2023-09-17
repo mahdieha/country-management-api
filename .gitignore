@@ -5,6 +5,7 @@ target/
 
 ### InteliJ IDEA ###
 .idea
+*.iml
 
 ### MacOs Stuff ###
 **/.DS_Store

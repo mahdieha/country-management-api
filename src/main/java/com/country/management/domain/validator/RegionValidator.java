@@ -1,25 +1,18 @@
 package com.country.management.domain.validator;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import java.util.HashSet;
+import java.util.List;
 
 
 public class RegionValidator implements ConstraintValidator<ValidRegion, String> {
 
-    private static final String[] ALLOWED_REGIONS = {
-            "Asia", "Europe", "Africa", "Americas", "Oceania"
-    };
+    private static final HashSet<String> ALLOWED_REGIONS = new HashSet<>(List.of("asia", "europe", "africa", "americas", "oceania"));
 
     @Override
     public boolean isValid(String region, ConstraintValidatorContext context) {
-        for (String allowedRegion : ALLOWED_REGIONS) {
-            if (allowedRegion.equalsIgnoreCase(region)) {
-                return true;
-            }
-        }
-        return false;
+        return ALLOWED_REGIONS.contains(region.toLowerCase());
     }
 }
