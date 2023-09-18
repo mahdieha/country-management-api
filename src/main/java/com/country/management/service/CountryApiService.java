@@ -22,11 +22,23 @@ public class CountryApiService {
     private final RestTemplate restTemplate;
     private final String apiUrl;
 
+    /**
+     * Constructor for CountryApiService
+     *
+     * @param restTemplateBuilder RestTemplateBuilder
+     * @param apiUrl RestCountries API URL
+     */
     public CountryApiService(RestTemplateBuilder restTemplateBuilder, @Value("${restcountries.api.base-url}") String apiUrl) {
         this.restTemplate = restTemplateBuilder.build();
         this.apiUrl = apiUrl;
     }
 
+    /**
+     * Get countries from the RestCountries API
+     *
+     * @return List of countries from the RestCountries API
+     * @throws CountryApiException If the API call fails
+     */
     @Cacheable("countries")
     public List<Country> getCountries() {
         ResponseEntity<Country[]> response;

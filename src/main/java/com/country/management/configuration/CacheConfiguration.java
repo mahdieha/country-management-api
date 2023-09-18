@@ -12,6 +12,11 @@ import java.util.concurrent.TimeUnit;
 @EnableCaching
 public class CacheConfiguration {
 
+    /**
+     * Cache manager for countries with 1 day expiration time and maximum size of 1
+     *
+     * @return Cache manager for countries
+     */
     @Bean
     public CaffeineCacheManager cacheManager() {
         CaffeineCacheManager cacheManager = new CaffeineCacheManager("countries");
@@ -21,7 +26,7 @@ public class CacheConfiguration {
 
     Caffeine<Object, Object> caffeineCacheBuilder() {
         return Caffeine.newBuilder()
-                .expireAfterWrite(1, TimeUnit.DAYS) // Set your desired cache expiration time
+                .expireAfterWrite(1, TimeUnit.DAYS)
                 .maximumSize(1);
     }
 }

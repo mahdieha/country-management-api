@@ -21,6 +21,12 @@ public class CustomExceptionHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomExceptionHandler.class);
 
+    /**
+     * Handles CountryApiException
+     *
+     * @param ex Exception to handle
+     * @return ErrorDTO containing error details
+     */
     @ExceptionHandler(CountryApiException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ResponseBody
@@ -37,11 +43,16 @@ public class CustomExceptionHandler {
         return error;
     }
 
+    /**
+     * Handles ConstraintViolationException
+     *
+     * @param ex Exception to handle
+     * @return ErrorDTO containing error details
+     */
     @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<ErrorDTO> handleConstraintViolationException(
-            ConstraintViolationException ex
-    ) {
+    public ResponseEntity<ErrorDTO> handleConstraintViolationException(ConstraintViolationException ex) {
         ErrorDTO error = new ErrorDTO();
+
         error.setTimestamp(new Date());
         error.setStatus(HttpStatus.BAD_REQUEST.value());
         error.addError("Invalid region. Region must be one of Asia, Europe, Africa, Americas or Oceania.");

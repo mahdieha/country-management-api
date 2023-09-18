@@ -21,6 +21,9 @@ public class CountryServiceImpl implements CountryService {
         this.countryApiService = countryApiService;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Country> getCountriesSortedByPopulationDensity() {
 
@@ -33,7 +36,9 @@ public class CountryServiceImpl implements CountryService {
                 .toList();
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Country getCountryWithMostBorderingCountriesInDifferentRegion(final String region) {
         // Fetch country data from the RestCountries API
@@ -70,7 +75,13 @@ public class CountryServiceImpl implements CountryService {
         return countryWithMostBorderingCountries;
     }
 
-    // Helper function to find a country by its code
+    /**
+     * Helper function to find country by country code
+     *
+     * @param countryCode Country code to search for (cca3)
+     * @param countries List of countries
+     * @return Country with the given country code
+     */
     private Country findCountryByCode(String countryCode, List<Country> countries) {
         for (Country country : countries) {
             if (countryCode.equals(country.getCca3())) {
